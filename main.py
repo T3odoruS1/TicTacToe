@@ -60,6 +60,10 @@ def main():
                 try:
                     if self.taken_squaresX_row[0] == self.taken_squaresX_row[1] == self.taken_squaresX_row[2] or self.taken_squaresX_column[0] == self.taken_squaresX_column[1] == self.taken_squaresX_column[2]:
                         print("X Wins!")
+                    elif self.taken_squaresX_row[0] == self.taken_squaresX_column[0] and self.taken_squaresX_row[1] == self.taken_squaresX_column[1] and self.taken_squaresX_row[2] == self.taken_squaresX_column[2]:
+                        print("X Wins!")
+                    elif self.b[7].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[3].cget("text") == "X":
+                        print("X Wins!")
                 except IndexError:
                     pass
             elif player_symb == "O":
@@ -67,7 +71,11 @@ def main():
                 self.taken_squaresO_column.append(curr_column)
                 try:
                     if self.taken_squaresO_row[0] == self.taken_squaresO_row[1] == self.taken_squaresO_row[2] or self.taken_squaresO_column[0] == self.taken_squaresO_column[1] == self.taken_squaresO_column[2]:
-                        print("O Wins")
+                        print("O Wins!")
+                    elif self.taken_squaresO_row[0] == self.taken_squaresO_column[0] and self.taken_squaresO_row[1] == self.taken_squaresO_column[1] and self.taken_squaresO_row[2] == self.taken_squaresO_column[2]:
+                        print("O Wins!")
+                    elif self.b[7].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[3].cget("text") == "0":
+                        print("O Wins!")
                 except IndexError:
                     pass
         def change_val(self, butt):
