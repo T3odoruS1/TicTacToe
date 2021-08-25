@@ -19,7 +19,7 @@ def main():
             self.taken_squaresO_column = []
 
             button_label = LabelFrame(self.root)
-            button_label.place(x=100, y=100, relwidth=0.75, relheight=0.7)
+            button_label.place(x=110, y=100, relwidth=0.75, relheight=0.7)
             self.b[1] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(1))
             self.b[2] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(2))
             self.b[3] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(3))
@@ -42,10 +42,10 @@ def main():
 
             player_label = LabelFrame(self.root)
             player_label.place(x=50, y=5, relwidth=0.9, relheight=0.15)
-            self.current_player = Label(player_label, text=" Current player:", font=("comicsans", 32))
-            self.current_player.grid(row=0, column=0, padx=150)
-            self.x_or_0 = Label(player_label, text=self.player_term, font=("comiscans", 56))
-            self.x_or_0.grid(row=0, column=1)
+            self.current_player = Label(player_label, text=" Current player:", font=("comicsans", 56))
+            self.current_player.place(relx=0.1,rely=0.05)
+            self.x_or_0 = Label(player_label, text=self.player_term, font=("comiscans", 63))
+            self.x_or_0.place(relx=0.6, rely=0.05)
 
         def change_button(self, butt):
             if self.player_term == "X":
@@ -59,11 +59,17 @@ def main():
                 self.taken_squaresX_column.append(curr_column)
                 try:
                     if self.taken_squaresX_row[0] == self.taken_squaresX_row[1] == self.taken_squaresX_row[2] or self.taken_squaresX_column[0] == self.taken_squaresX_column[1] == self.taken_squaresX_column[2]:
-                        print("X Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player 'X' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                     elif self.taken_squaresX_row[0] == self.taken_squaresX_column[0] and self.taken_squaresX_row[1] == self.taken_squaresX_column[1] and self.taken_squaresX_row[2] == self.taken_squaresX_column[2]:
-                        print("X Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player 'X' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                     elif self.b[7].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[3].cget("text") == "X":
-                        print("X Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player 'X' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                 except IndexError:
                     pass
             elif player_symb == "O":
@@ -71,16 +77,26 @@ def main():
                 self.taken_squaresO_column.append(curr_column)
                 try:
                     if self.taken_squaresO_row[0] == self.taken_squaresO_row[1] == self.taken_squaresO_row[2] or self.taken_squaresO_column[0] == self.taken_squaresO_column[1] == self.taken_squaresO_column[2]:
-                        print("O Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player '0' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                     elif self.taken_squaresO_row[0] == self.taken_squaresO_column[0] and self.taken_squaresO_row[1] == self.taken_squaresO_column[1] and self.taken_squaresO_row[2] == self.taken_squaresO_column[2]:
-                        print("O Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player '0' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                     elif self.b[7].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[3].cget("text") == "0":
-                        print("O Wins!")
+                        self.current_player.configure(text="")
+                        self.x_or_0.configure(text="Player '0' Wins!")
+                        self.x_or_0.place(relx=0.23, rely=0.05)
                 except IndexError:
                     pass
+
         def change_val(self, butt):
             if self.b[butt].cget("text") != " ":
                 print("This button is already used")
+                return None
+            elif self.current_player.cget("text") == "":
+                print("Game over!")
                 return None
             else:
                 self.change_button(butt)
