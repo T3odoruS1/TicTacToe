@@ -9,6 +9,7 @@ def main():
         def __init__(self, root):
             self.root = root
             self.root.title("TicTakToe")
+            self.root.resizable(False, False)
             self.root.geometry("900x600")
             self._9button = IntVar
             self.player_term = "X"
@@ -18,27 +19,31 @@ def main():
             self.taken_squaresO_row = []
             self.taken_squaresO_column = []
 
-            button_label = LabelFrame(self.root)
-            button_label.place(x=110, y=100, relwidth=0.75, relheight=0.7)
-            self.b[1] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(1))
-            self.b[2] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(2))
-            self.b[3] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(3))
-            self.b[4] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(4))
-            self.b[5] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(5))
-            self.b[6] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(6))
-            self.b[7] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(7))
-            self.b[8] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(8))
-            self.b[9] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(9))
 
-            self.b[1].grid(row=0, column=0, padx=75, pady=20)
-            self.b[2].grid(row=0, column=1, padx=100, pady=20)
-            self.b[3].grid(row=0, column=2, padx=100, pady=20)
-            self.b[4].grid(row=1, column=0, padx=75, pady=50)
-            self.b[5].grid(row=1, column=1, padx=100, pady=50)
-            self.b[6].grid(row=1, column=2, padx=100, pady=50)
-            self.b[7].grid(row=2, column=0, padx=75, pady=50)
-            self.b[8].grid(row=2, column=1, padx=100, pady=50)
-            self.b[9].grid(row=2, column=2, padx=100, pady=50)
+
+
+            button_label = LabelFrame(self.root)
+            button_label.place(x=150, y=100, relwidth=0.64, relheight=0.66)
+            self.b[1] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(1),height=2, width= 5)
+            self.b[2] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(2),height=2, width= 5)
+            self.b[3] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(3),height=2, width= 5)
+            self.b[4] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(4),height=2, width= 5)
+            self.b[5] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(5),height=2, width= 5)
+            self.b[6] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(6),height=2, width= 5)
+            self.b[7] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(7),height=2, width= 5)
+            self.b[8] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(8),height=2, width= 5)
+            self.b[9] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(9),height=2, width= 5)
+
+
+            self.b[1].grid(row=0, column=0)
+            self.b[2].grid(row=0, column=1)
+            self.b[3].grid(row=0, column=2)
+            self.b[4].grid(row=1, column=0)
+            self.b[5].grid(row=1, column=1)
+            self.b[6].grid(row=1, column=2)
+            self.b[7].grid(row=2, column=0)
+            self.b[8].grid(row=2, column=1)
+            self.b[9].grid(row=2, column=2)
 
             player_label = LabelFrame(self.root)
             player_label.place(x=50, y=5, relwidth=0.9, relheight=0.15)
@@ -58,15 +63,17 @@ def main():
                 self.taken_squaresX_row.append(curr_row)
                 self.taken_squaresX_column.append(curr_column)
                 try:
-                    if self.taken_squaresX_row[0] == self.taken_squaresX_row[1] == self.taken_squaresX_row[2] or self.taken_squaresX_column[0] == self.taken_squaresX_column[1] == self.taken_squaresX_column[2]:
+                    if self.b[1].cget("text") == "X" and self.b[4].cget("text") == "X" and self.b[7].cget("text") == "X" or self.b[2].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[8].cget("text") \
+                            == "X" or self.b[3].cget("text") == "X" and self.b[6].cget("text") == "X" and self.b[9].cget("text") == "X":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player 'X' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
-                    elif self.taken_squaresX_row[0] == self.taken_squaresX_column[0] and self.taken_squaresX_row[1] == self.taken_squaresX_column[1] and self.taken_squaresX_row[2] == self.taken_squaresX_column[2]:
+                    elif self.b[1].cget("text") == "X" and self.b[2].cget("text") == "X" and self.b[3].cget("text") == "X" or self.b[4].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[6].cget("text") \
+                            == "X" or self.b[7].cget("text") == "X" and self.b[8].cget("text") == "X" and self.b[9].cget("text") == "X":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player 'X' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
-                    elif self.b[7].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[3].cget("text") == "X":
+                    elif self.b[7].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[3].cget("text") == "X" or self.b[3].cget("text") == "X" and self.b[5].cget("text") == "X" and self.b[7].cget("text") == "X":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player 'X' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
@@ -76,15 +83,17 @@ def main():
                 self.taken_squaresO_row.append(curr_row)
                 self.taken_squaresO_column.append(curr_column)
                 try:
-                    if self.taken_squaresO_row[0] == self.taken_squaresO_row[1] == self.taken_squaresO_row[2] or self.taken_squaresO_column[0] == self.taken_squaresO_column[1] == self.taken_squaresO_column[2]:
+                    if self.b[1].cget("text") == "0" and self.b[4].cget("text") == "0" and self.b[7].cget("text") == "0" or self.b[2].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[8].cget("text") \
+                            == "0" or self.b[3].cget("text") == "0" and self.b[6].cget("text") == "0" and self.b[9].cget("text") == "0":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player '0' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
-                    elif self.taken_squaresO_row[0] == self.taken_squaresO_column[0] and self.taken_squaresO_row[1] == self.taken_squaresO_column[1] and self.taken_squaresO_row[2] == self.taken_squaresO_column[2]:
+                    elif self.b[1].cget("text") == "0" and self.b[2].cget("text") == "0" and self.b[3].cget("text") == "0" or self.b[4].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[6].cget("text") \
+                            == "0" or self.b[7].cget("text") == "0" and self.b[8].cget("text") == "0" and self.b[9].cget("text") == "0":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player '0' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
-                    elif self.b[7].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[3].cget("text") == "0":
+                    elif self.b[7].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[3].cget("text") == "0" or self.b[3].cget("text") == "0" and self.b[5].cget("text") == "0" and self.b[7].cget("text") == "0":
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player '0' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
