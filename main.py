@@ -49,6 +49,8 @@ def main():
             self.x_or_0.place(relx=0.6, rely=0.05)
             self.restart_button = Button(self.root, text="Restart", height=3, width=4, command=self.restart)
             self.restart_button.place(relx=0.85, rely=0.85)
+            self.pinus_label = Label(self.root, text=" ",font=("comicsans",35))
+            self.pinus_label.place(relx=0.4, rely=0.85)
 
         def restart(self):
             self.b[1].configure(text=" ")
@@ -91,6 +93,10 @@ def main():
                         self.current_player.configure(text="")
                         self.x_or_0.configure(text="Player 'X' Wins!")
                         self.x_or_0.place(relx=0.23, rely=0.05)
+                    elif self.b[2].cget("text") == "X" and self.b[7].cget("text") == "X" and self.b[9].cget("text") == "X" and self.b[5].cget("text") == "0" and self.b[8].cget("text") == "0":
+                        self.pinus_label.configure(text="PINUS!!!!!!!")
+
+
                 except IndexError:
                     pass
             elif player_symb == "O":
