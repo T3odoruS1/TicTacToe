@@ -19,9 +19,6 @@ def main():
             self.taken_squaresO_row = []
             self.taken_squaresO_column = []
 
-
-
-
             button_label = LabelFrame(self.root)
             button_label.place(x=150, y=100, relwidth=0.64, relheight=0.66)
             self.b[1] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(1),height=2, width= 5)
@@ -33,7 +30,6 @@ def main():
             self.b[7] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(7),height=2, width= 5)
             self.b[8] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(8),height=2, width= 5)
             self.b[9] = Button(button_label, text=" ", font=("comicsans", 50), command=lambda: self.change_val(9),height=2, width= 5)
-
 
             self.b[1].grid(row=0, column=0)
             self.b[2].grid(row=0, column=1)
@@ -51,6 +47,24 @@ def main():
             self.current_player.place(relx=0.1,rely=0.05)
             self.x_or_0 = Label(player_label, text=self.player_term, font=("comiscans", 63))
             self.x_or_0.place(relx=0.6, rely=0.05)
+            self.restart_button = Button(self.root, text="Restart", height=3, width=4, command=self.restart)
+            self.restart_button.place(relx=0.85, rely=0.85)
+
+        def restart(self):
+            self.b[1].configure(text=" ")
+            self.b[2].configure(text=" ")
+            self.b[3].configure(text=" ")
+            self.b[4].configure(text=" ")
+            self.b[5].configure(text=" ")
+            self.b[6].configure(text=" ")
+            self.b[7].configure(text=" ")
+            self.b[8].configure(text=" ")
+            self.b[9].configure(text=" ")
+            self.player_term = "X"
+            self.x_or_0.configure(text=self.player_term)
+            self.current_player.configure(text=" Current player:")
+            self.x_or_0.place(relx=0.6, rely=0.05)
+
 
         def change_button(self, butt):
             if self.player_term == "X":
